@@ -1301,10 +1301,28 @@ body.active { overflow: hidden; }
 
   .search-btn {
     position: relative;
+    padding-right: 20px;
     color: var(--white);
+    
+    
+  }
+  .search-btn input{
+    width: 150px;
+    border-radius: 30px;
+    padding-right: 20px;
+    background-color: var(--white);
+    padding-left: 10px;
+    padding-right: 30px;
   }
 
-  .search-btn ion-icon { --ionicon-stroke-width: 80px; }
+  .search-btn ion-icon { --ionicon-stroke-width: 80px;
+  position: absolute;
+  right:25px;
+  color: black;
+  top: 5px;
+  
+   
+ }
 
   .search-btn::after {
     content: "";
@@ -1314,6 +1332,7 @@ body.active { overflow: hidden; }
     background: hsla(0, 0%, 100%, 0.1);
     width: 2px;
     height: 14px;
+   
   }
 
   .lang-wrapper {

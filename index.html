@@ -42,9 +42,10 @@
 
       <div class="header-actions">
 
-        <button class="search-btn">
+        <button class="search-btn"> <input type="text" class="">
           <ion-icon name="search-outline"></ion-icon>
         </button>
+        
 
         <div class="lang-wrapper">
           <label for="language">
@@ -88,11 +89,11 @@
           </li>
 
           <li>
-            <a href="#" class="navbar-link">Movie</a>
+            <a href="#upcoming" class="navbar-link">Upcoming</a>
           </li>
 
           <li>
-            <a href="#" class="navbar-link">Tv Show</a>
+            <a href="#tvshow" class="navbar-link">Tv Show</a>
           </li>
 
           <li>
@@ -100,7 +101,7 @@
           </li>
 
           <li>
-            <a href="#" class="navbar-link">Pricing</a>
+            <a href="#pricing" class="navbar-link">Pricing</a>
           </li>
 
         </ul>
@@ -217,7 +218,7 @@
         - #UPCOMING
       -->
 
-      <section class="upcoming">
+      <section id ="upcoming" class="upcoming">
         <div class="container">
 
           <div class="flex-wrapper">
@@ -406,7 +407,7 @@
       <!-- 
         - #SERVICE
       -->
-      <section class="pricing-plans">
+      <section id="pricing" class="pricing-plans">
         <div class="pricing-card basic">
           <div class="heading">
             <h4>BASIC</h4>
@@ -442,7 +443,7 @@
               <strong>24/7</strong> support
             </li>
           </ul>
-          <button class="cta-btn">SELECT</button>
+          <button class="cta-btn" onclick="window.location.href = 'checkout.html';">SELECT</button>
         </div>
         <div class="pricing-card standard">
           <div class="heading">
@@ -479,7 +480,7 @@
               <strong>24/7</strong> support
             </li>
           </ul>
-          <button class="cta-btn">SELECT</button>
+          <button class="cta-btn" onclick="window.location.href = 'checkout.html';"> Select</button>
         </div>
         <div class="pricing-card premium">
           <div class="heading">
@@ -521,7 +522,7 @@
               <strong>Advanced</strong> security features
             </li>
           </ul>
-          <button class="cta-btn">SELECT</button>
+          <button class="cta-btn" onclick="window.location.href = 'checkout.html';">SELECT</button>
         </div>
       </section>
 
@@ -863,7 +864,7 @@
         - #TV SERIES
       -->
 
-      <section class="tv-series">
+      <section id="tvshow" class="tv-series">
         <div class="container">
 
           <p class="section-subtitle">Best TV Series</p>
