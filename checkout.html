@@ -13,7 +13,7 @@
 
 <div class="container">
 
-    <form action="">
+    <form action="/Streaming-Platform-Project/assets/php/checkout_form.php" method="post">
 
         <div class="row">
 
@@ -23,29 +23,29 @@
 
                 <div class="inputBox">
                     <span>full name :</span>
-                    <input type="text" placeholder="Flen Fouleni">
+                    <input type="text" placeholder="Flen Fouleni" required name="name">
                 </div>
                 <div class="inputBox">
                     <span>email :</span>
-                    <input type="email" placeholder="flen@foulen.com">
+                    <input type="email" placeholder="flen@foulen.com" required name="email">
                 </div>
                 <div class="inputBox">
                     <span>address :</span>
-                    <input type="text" placeholder="room - street - locality">
+                    <input type="text" placeholder="room - street - locality" required name="address">
                 </div>
                 <div class="inputBox">
                     <span>city :</span>
-                    <input type="text" placeholder="Tunis">
+                    <input type="text" placeholder="Tunis" required name="city">
                 </div>
 
                 <div class="flex">
                     <div class="inputBox">
                         <span>state :</span>
-                        <input type="text" placeholder="Tunisia">
+                        <input type="text" placeholder="Tunisia" required name="state">
                     </div>
                     <div class="inputBox">
                         <span>zip code :</span>
-                        <input type="text" placeholder="123 456">
+                        <input type="text" placeholder="123 456" required name="zipcode">
                     </div>
                 </div>
 
@@ -61,25 +61,25 @@
                 </div>
                 <div class="inputBox">
                     <span>name on card :</span>
-                    <input type="text" placeholder="mr. Flen Ben Foulen">
+                    <input type="text" placeholder="mr. Flen Ben Foulen" required name="cardname">
                 </div>
                 <div class="inputBox">
                     <span>credit card number :</span>
-                    <input type="number" placeholder="1111-2222-3333-4444">
+                    <input type="number" placeholder="1111-2222-3333-4444" required name="creditcard">
                 </div>
                 <div class="inputBox">
                     <span>exp month :</span>
-                    <input type="text" placeholder="january">
+                    <input type="text" placeholder="january" required name="expm">
                 </div>
 
                 <div class="flex">
                     <div class="inputBox">
                         <span>exp year :</span>
-                        <input type="number" placeholder="2022">
+                        <input type="number" placeholder="2022" required name="expy">
                     </div>
                     <div class="inputBox">
                         <span>CVV :</span>
-                        <input type="text" placeholder="1234">
+                        <input type="text" placeholder="1234" required name="cvv">
                     </div>
                 </div>
 
@@ -87,11 +87,36 @@
     
         </div>
 
-        <input type="submit" value="proceed to checkout" class="submit-btn">
+        <input type="submit" value="proceed to checkout" class="submit-btn" name="send">
 
     </form>
 
 </div>    
-    
+<div id="overlay">
+    <div id="checkout-status">
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+      <div class="payment-success">
+      <h2>Payment Successful!</h2>
+      </div>
+    </div>
+  </div>
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  var form = document.querySelector('form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    var overlay = document.getElementById('overlay');
+    overlay.style.display = 'block';
+    setTimeout(function() {
+      overlay.style.display = 'none';
+      form.reset();
+    }, 3000);
+  });
+}); 
+
+</script> 
 </body>
 </html>
