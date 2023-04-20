@@ -53,6 +53,7 @@ window.addEventListener('load', ()=>{
   test.forEach(element => {
     const {name,year}=element;
     let card=document.createElement('a');
+    card.setAttribute('href', './movie-details.html');
     card.innerHTML=`          
     <div class="content">
       <h6>${name}</h6>
@@ -62,7 +63,7 @@ window.addEventListener('load', ()=>{
   searchbox.appendChild(card);
   });
 })
-//mochkla tebda lahne
+
 let searching = document.getElementById('searching');
 searching.addEventListener('keyup', () => {
   

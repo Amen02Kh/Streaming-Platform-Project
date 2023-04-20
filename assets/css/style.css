@@ -1337,14 +1337,15 @@ body.active { overflow: hidden; }
 
   .searchin .searchbox{
     width: 150px;
-    height: 300px;
+    height: 200px;
     background: rgb(184, 184, 184,.3);
     border: 20px;
+    border-radius: 5px;
     position: absolute;
-    top:25px;
+    top:23px;
     overflow: auto;
-    /* visibility: hidden;
-    opacity: 0;  */
+     visibility: hidden;
+    opacity: 0;  
     transition: .3s linear;
   }
   .searchin .searchbox::-webkit-scrollbar{
@@ -1384,6 +1385,7 @@ body.active { overflow: hidden; }
   } */
   .searchin .searchbox a .content{
     color: #fff;
+    padding-left: 10px;
    }
    .searchin .searchbox a .content h6{
     color: #fff;
