@@ -19,6 +19,7 @@ if (isset($_POST['send'])) {
     $request="INSERT INTO payment(name,email,address,city,state,zipcode,cardname,creditcard,expm,expy,cvv) VALUES('$name','$email','$address','$city','$state','$zipcode','$cardname','$creditcard','$expm','$expy','$cvv')";
 
     mysqli_query($connection,$request);
+    sleep(2);
     header('location:../../index.html');
 }
 else{

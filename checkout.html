@@ -104,18 +104,19 @@
     </div>
   </div>
  <script>
+
     document.addEventListener('DOMContentLoaded', function() {
-  var form = document.querySelector('form');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    var overlay = document.getElementById('overlay');
-    overlay.style.display = 'block';
+   var form = document.querySelector('form');
+   form.addEventListener('submit', function(event) {
+     
+     var overlay = document.getElementById('overlay');
+     overlay.style.display = 'block';
     setTimeout(function() {
       overlay.style.display = 'none';
-      form.reset();
+      //form.reset();
     }, 3000);
   });
-}); 
+ }); 
 
 </script> 
 </body>
