@@ -4,6 +4,7 @@
  * navbar variables
  */
 
+
 const navOpenBtn = document.querySelector("[data-menu-open-btn]");
 const navCloseBtn = document.querySelector("[data-menu-close-btn]");
 const navbar = document.querySelector("[data-navbar]");
@@ -42,33 +43,47 @@ signinBtn.addEventListener('click', function() {
   
   window.location.href = 'signin.html';
 });
+//trying ajax req
 
-
-
-//HETHA code nav bar partie loula tekhdem w thenia feha mochkla
-//amalt tableau dobj static khater taa php habetch tekhdem kaed njareb
-let test=[{name:"Doctor Strange",year:"2021"},{name:"Sbouei",year:"2021"},{name:"lahir",year:"2021"},{name:"choufli nam",year:"2021"},{name:"falouja",year:"2021"},{name:"darbouka",year:"2021"},{name:"namouma",year:"2021"},{name:"mara fil kar",year:"2021"}];
-let searchbox=document.getElementsByClassName('searchbox')[0];
-window.addEventListener('load', ()=>{
-  test.forEach(element => {
-    const {name,year}=element;
-    let card=document.createElement('a');
-    card.setAttribute('href', './movie-details.html');
-    card.innerHTML=`          
-    <div class="content">
-      <h6>${name}</h6>
-      <p>${year}</p>
-    </div>
-  `;
-  searchbox.appendChild(card);
+var searching = document.getElementById('searching');
+var movies = [];
+$(document).ready(function() {
+  $.ajax({
+    url: '../Streaming-Platform-Project/assets/php/fetchbd.php',
+    method: "POST",
+    dataType: "json",
+    success: function(response) {
+      $.each(response, function(index, item) {
+        var movie = {
+          name: item.name,
+          year: item.year
+        };
+        movies.push(movie);
+      });
+      console.log(movies); // array of movie objects
+      
+      // create movie cards
+      let searchbox=document.getElementsByClassName('searchbox')[0];
+      movies.forEach(element => {
+        const {name,year}=element;
+        let card=document.createElement('a');
+        card.setAttribute('href', './movie-details.html');
+        card.innerHTML=`          
+        <div class="content">
+          <h6>${name}</h6>
+          <p>${year}</p>
+        </div>
+        `;
+        searchbox.appendChild(card);
+      });
+    }
   });
-})
+});
 
-let searching = document.getElementById('searching');
+let searchbox = document.getElementsByClassName('searchbox')[0];
 searching.addEventListener('keyup', () => {
-  
   let filter = searching.value.toUpperCase();
-  let a=searchbox.getElementsByTagName('a');
+  let a = searchbox.getElementsByTagName('a');
   for (let index = 0; index < a.length; index++) {
     let b = a[index].getElementsByClassName('content')[0];
     let c = b.getElementsByTagName('h6')[0];
@@ -76,7 +91,7 @@ searching.addEventListener('keyup', () => {
     if (Textvalue.toUpperCase().indexOf(filter) > -1) {
       a[index].style.display = '';
       searchbox.style.visibility="visible";
-    searchbox.style.opacity=1;
+      searchbox.style.opacity=1;
     } else {
       a[index].style.display = 'none';
     }
@@ -86,6 +101,7 @@ searching.addEventListener('keyup', () => {
     }
   }
 });
+
 // AHAWA CODE ELI MAFROUDH IHEZ DONNE MEL PHP LEL JS
 /* fetch("http://localhost/Streaming-Platform-Project/assets/php/fetchbd.php")
   .then((res) => {
@@ -99,14 +115,14 @@ searching.addEventListener('keyup', () => {
     
 
   })
-const goTopBtn = document.querySelector("[data-go-top]");
+
 fetch("http://localhost/Streaming-Platform-Project/test.php")
 .then((res) => res.json())
     .then((data) => {
         const result = JSON.parse(data);
         
     }); */
-    
+    const goTopBtn = document.querySelector("[data-go-top]");   
 window.addEventListener("scroll", function () {
 
   window.scrollY >= 500 ? goTopBtn.classList.add("active") : goTopBtn.classList.remove("active");
