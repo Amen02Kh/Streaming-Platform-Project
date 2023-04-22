@@ -1,6 +1,9 @@
 <?php
 
 $connection=mysqli_connect('localhost','root','','filmhub_db');
+if(!$connection){
+    die("Something went wrong;");
+}
 
 if (isset($_POST['send'])) {
 

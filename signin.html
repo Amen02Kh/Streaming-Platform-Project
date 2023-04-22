@@ -4,32 +4,69 @@
 	<title>Slide Navbar</title>
 	
 	<link rel="stylesheet" href="./assets/css/style2.css">
-	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
+	<style>
+		.alert.alert-success {
+	background-color: #dff0d8;
+	font-size: 16px;
+	color: #3c763d;
+	border-color: #d6e9c6;
+	padding:10px;
+	border-radius: 10px;
+  }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
 </head>
 <body>
 	
 
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
-
-			<div class="signup">
-				<form>
+			<div class="signup" id="registration-form">
+				<form method="post" id="signup-form" action="../Streaming-Platform-Project/assets/php/register.php">
 					<label>Sign up</label>
-					<input type="text" name="txt" placeholder="User name" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<button>Sign up</button>
+					<input type="text" name="username" placeholder="User name" id="username" required="">
+					<input type="email" name="email" placeholder="Email" id="email"required="">
+					<input type="password" name="pswd" placeholder="Password" id="password" required="">
+					<button type="submit" name="submit" id="submit-btn">Sign up</button>
 				</form>
 			</div>
 
 			<div class="login">
 				<form>
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" placeholder="Email" required="">
+					<input type="text" name="email" placeholder="Username" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
 					<button>Login</button>
 				</form>
 			</div>
 	</div>
+	<script>
+		$(document).ready(function(){
+			$('#signup-form').submit(function(e){
+				e.preventDefault();
+				var username = $('#username').val();
+				var email = $('#email').val();
+				var password = $('#password').val();
+				$.ajax({
+					url: '../Streaming-Platform-Project/assets/php/register.php',
+					method: 'POST',
+					data: {
+						username: username,
+						email: email,
+						password: password,
+						submit: true
+					},
+					success: function(response){
+						$('.signup .alert-success').remove();
+						$('.signup').append('<div class="alert alert-success">You are now registered successfully.</div>');
+						$('#signup-form')[0].reset();
+					}
+				});
+			});
+		});
+	</script>
+		
 </body>
 </html>

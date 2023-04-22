@@ -87,7 +87,7 @@ searching.addEventListener('keyup', () => {
   }
 });
 // AHAWA CODE ELI MAFROUDH IHEZ DONNE MEL PHP LEL JS
-/* fetch("http://localhost/Streaming-Platform-Project/php/fetchbd.php")
+/* fetch("http://localhost/Streaming-Platform-Project/assets/php/fetchbd.php")
   .then((res) => {
     if (!res.ok) {
       throw new Error("Network response was not ok");
