@@ -7,9 +7,20 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
 	<style>
 		.alert.alert-success {
+			text-align: center;
 	background-color: #dff0d8;
 	font-size: 16px;
 	color: #3c763d;
+	border-color: #d6e9c6;
+	padding:10px;
+	border-radius: 10px;
+  }
+
+  .alert.alert-danger {
+	text-align: center;
+	background-color: #dff0d8;
+	font-size: 16px;
+	color: #9c1717;
 	border-color: #d6e9c6;
 	padding:10px;
 	border-radius: 10px;
@@ -34,15 +45,56 @@
 			</div>
 
 			<div class="login">
-				<form>
+				<form method="post" id="login-form" action="../Streaming-Platform-Project/assets/php/login.php">
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="email" placeholder="Username" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<button>Login</button>
+					<input type="text" name="username" placeholder="Username" required="">
+					<input type="password" name="password" placeholder="Password" required="">
+					<button type="submit" name="submit" id="submit-btn-log">Login</button>
 				</form>
 			</div>
 	</div>
 	<script>
+$(document).ready(function(){
+    $('#login-form').submit(function(e){
+        e.preventDefault();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        $.ajax({
+            url: '../Streaming-Platform-Project/assets/php/login.php',
+            method: 'POST',
+            data: {
+                username: username,
+                password: password,
+                
+            },
+            success: function(response){
+				
+                if(response.success) {
+                    $('.login .alert-success').remove();
+                    $('.login').append('<div class="alert alert-success">You are now logged in you will be redirected.</div>');
+                    $('#login-form')[0].reset();
+                    console.log(response);
+                } else {
+                    $('.login .alert-danger').remove();
+                    $('.login').append('<div class="alert alert-danger">You are not logged in.</div>');
+                    $('#login-form')[0].reset();
+                    console.log(response);
+                }
+            }
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
 		$(document).ready(function(){
 			$('#signup-form').submit(function(e){
 				e.preventDefault();
@@ -59,10 +111,13 @@
 						submit: true
 					},
 					success: function(response){
+						
 						$('.signup .alert-success').remove();
 						$('.signup').append('<div class="alert alert-success">You are now registered successfully.</div>');
 						$('#signup-form')[0].reset();
+						console.log(response);
 					}
+					
 				});
 			});
 		});
