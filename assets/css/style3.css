@@ -9,68 +9,74 @@
   transition: all .2s linear;
 }
 
-.container{
+.container2{
   display: flex;
   justify-content: center;
   align-items: center;
   padding:25px;
   min-height: 100vh;
-  background-image: url('../images/hero-bg.jpg');
+  
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  url('../images/background.jpg');
   background-size: cover;
+  
 }
 
-.container form {
+.container2 form {
     position: relative;
     padding: 20px;
     width: 700px;
-    background-image: url('../images/background.jpg');
+    background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)),
+    url('../images/background.jpg');
+    
     background-size: cover;
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
     z-index: 1; /* set a higher z-index to make sure the form is on top of the ::before pseudo-element */
   }
   
-  .container form::before {
+  .container2 form::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../images/background.jpg');
+    background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)),
+    url('../images/background.jpg');
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.7);
     background-blend-mode: darken;
     z-index: -1; /* set a lower z-index to make sure the ::before pseudo-element is behind the form */
   }
   
-.container form .row{
+.container2 form .row{
   display: flex;
   flex-wrap: wrap;
   gap:15px;
 }
 
-.container form .row .col{
+.container2 form .row .col{
   flex:1 1 250px;
 }
 
-.container form .row .col .title{
+.container2 form .row .col .title{
   font-size: 20px;
   color:#ffffff;
   padding-bottom: 5px;
   text-transform: uppercase;
 }
 
-.container form .row .col .inputBox{
+.container2 form .row .col .inputBox{
   margin:15px 0;
 }
 
-.container form .row .col .inputBox span{
+.container2 form .row .col .inputBox span{
   margin-bottom: 10px;
   display: block;
   color: #fff;
 }
 
-.container form .row .col .inputBox input{
+.container2 form .row .col .inputBox input{
   width: 100%;
   border:1px solid #ccc;
   padding:10px 15px;
@@ -78,26 +84,26 @@
   text-transform: none;
 }
 
-.container form .row .col .inputBox input:focus{
+.container2 form .row .col .inputBox input:focus{
   border:1px solid #c8c8c8;
 }
 
-.container form .row .col .flex{
+.container2 form .row .col .flex{
   display: flex;
   gap:15px;
 }
 
-.container form .row .col .flex .inputBox{
+.container2 form .row .col .flex .inputBox{
   margin-top: 5px;
 }
 
-.container form .row .col .inputBox img{
+.container2 form .row .col .inputBox img{
   height: 34px;
   margin-top: 5px;
   filter: drop-shadow(0 0 1px #000);
 }
 
-.container form .submit-btn{
+.container2 form .submit-btn{
   width: 100%;
   padding:12px;
   font-size: 17px;
@@ -111,7 +117,7 @@
   border-radius: 50px;
 }
 
-.container form .submit-btn:hover{
+.container2 form .submit-btn:hover{
   background: hsl(280, 92%, 80%);
 }
 #overlay {
