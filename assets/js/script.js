@@ -41,7 +41,7 @@ window.addEventListener("scroll", function () {
 var signinBtn = document.getElementById('signin-btn');
 signinBtn.addEventListener('click', function() {
   
-  window.location.href = 'signin.html';
+  window.location.href = '..\Streaming-Platform-Project\logout.php';
 });
 //trying ajax req
 

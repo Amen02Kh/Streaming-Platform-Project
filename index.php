@@ -1,4 +1,11 @@
+<?php   
+  session_start();  
 
+if (!isset($_SESSION['user'])) {   
+     header("location:..\Streaming-Platform-Project\signin.php");  
+     die();  
+}    
+?>  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +55,7 @@
       <div class="header-actions">
 
         <div class="searchin"> 
-          <input type="text" placeholder="Search" name="zebi" id="searching">
+          <input type="text" placeholder="Search"  id="searching">
           <ion-icon name="search-outline"></ion-icon>
           <div class="searchbox">
             <!-- <a href="#">
@@ -75,7 +82,7 @@
           </select>
         </div>
 
-        <button class="btn btn-primary" id="signin-btn" >Sign in</button>
+        <button class="btn btn-primary" id="signin-btn" >Log out</button>
 
       </div>
 
@@ -111,9 +118,7 @@
             <a href="#tvshow" class="navbar-link">Tv Show</a>
           </li>
 
-          <li>
-            <a href="#" class="navbar-link">Web Series</a>
-          </li>
+         
 
           <li>
             <a href="#pricing" class="navbar-link">Pricing</a>
@@ -1175,7 +1180,7 @@
       <div class="container">
 
         <p class="copyright">
-          &copy; 2022 <a href="#">FilmHub</a>. All Rights Reserved
+          &copy; 2023 <a href="#">FilmHub</a>. All Rights Reserved
         </p>
 
         <img src="./assets/images/footer-bottom-img.png" alt="Online banking companies logo" class="footer-bottom-img">

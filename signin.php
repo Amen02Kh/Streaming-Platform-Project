@@ -1,10 +1,48 @@
+<?php
+session_start();
+$conn = mysqli_connect('localhost', 'root', '', 'filmhub_db');
+
+
+if (isset($_POST['submit-btn-log'])) {
+    $user = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    $sql = mysqli_query($conn, "SELECT * FROM login_register WHERE username = '$user'");
+    $num = mysqli_num_rows($sql);
+
+    if ($num > 0) {
+        $row = mysqli_fetch_assoc($sql);
+		echo $row['password'];
+		echo '\n';
+		echo $password;
+		echo '<br>';
+		var_dump(password_verify($password, $row['password']));
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['user'] = $row['id'];
+            header("location:../Streaming-Platform-Project/index.php");
+            exit();
+        } else {
+            echo '<script>alert("tnekna pass ghalet")</script>';
+        }
+    } else {
+        echo '<script>alert("user famech")</script>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Slide Navbar</title>
 	
+	<link rel="stylesheet" href="./assets/css/style.css">
 	<link rel="stylesheet" href="./assets/css/style2.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
+	<link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<style>
 		.alert.alert-success {
 			text-align: center;
@@ -26,8 +64,6 @@
 	border-radius: 10px;
   }
 	</style>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
 </head>
 <body>
 	
@@ -45,16 +81,18 @@
 			</div>
 
 			<div class="login">
-				<form method="post" id="login-form" action="../Streaming-Platform-Project/assets/php/login.php">
+				<form method="post" id="login-form" >
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="text" name="username" placeholder="Username" required="">
 					<input type="password" name="password" placeholder="Password" required="">
-					<button type="submit" name="submit" id="submit-btn-log">Login</button>
+					<button type="submit" name="submit-btn-log" >Login</button>
 				</form>
+				  
 			</div>
+
 	</div>
 	<script>
-$(document).ready(function(){
+/* $(document).ready(function(){
     $('#login-form').submit(function(e){
         e.preventDefault();
         var username = $('#username').val();
@@ -84,7 +122,7 @@ $(document).ready(function(){
         });
     });
 });
-
+ */
 
 
 
@@ -121,7 +159,6 @@ $(document).ready(function(){
 				});
 			});
 		});
-	</script>
-		
+	</script>	
 </body>
 </html>
