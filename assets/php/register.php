@@ -12,9 +12,10 @@ if (isset($_POST['submit'])) {
    $password=$_POST['pswd'];
    
     #encrypting pwd for security
+//    $password_hash=password_hash($password,PASSWORD_DEFAULT);
    $password_hash=password_hash($password,PASSWORD_DEFAULT);
    #insertion user jdid
-    $sql="INSERT INTO login_register(username,email,password) values( ?, ?,?)";
+    $sql="INSERT INTO login_register(`username`,`email`,`password`) values( ?, ?,?)";
     
     # preventing SQL INJECTION
     $stmt=mysqli_stmt_init($connection);

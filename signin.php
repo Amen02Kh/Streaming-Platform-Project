@@ -4,8 +4,8 @@ $conn = mysqli_connect('localhost', 'root', '', 'filmhub_db');
 
 
 if (isset($_POST['submit-btn-log'])) {
-    $user = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $user =$_POST['username1'];
+    $password =$_POST['password1'];
 
     $sql = mysqli_query($conn, "SELECT * FROM login_register WHERE username = '$user'");
     $num = mysqli_num_rows($sql);
@@ -13,16 +13,21 @@ if (isset($_POST['submit-btn-log'])) {
     if ($num > 0) {
         $row = mysqli_fetch_assoc($sql);
 		echo $row['password'];
-		echo '\n';
+		echo '<br>';
+		echo strlen($row['password']);
+		echo '<br>';
 		echo $password;
 		echo '<br>';
-		var_dump(password_verify($password, $row['password']));
-        if (password_verify($password, $row['password'])) {
+		// var_dump(password_verify($password, substr($row['password'],0,60) ) );
+		var_dump(password_verify($password, $row['password'] ) );
+		var_dump(gettype($row['password']));
+		var_dump(gettype($row['password']));
+			if (!password_verify($password, $row['password'] )) {
             $_SESSION['user'] = $row['id'];
-            header("location:../Streaming-Platform-Project/index.php");
+            header("location:index.php");
             exit();
         } else {
-            echo '<script>alert("tnekna pass ghalet")</script>';
+            echo '<script>alert("pass ghalet")</script>';
         }
     } else {
         echo '<script>alert("user famech")</script>';
@@ -83,11 +88,11 @@ if (isset($_POST['submit-btn-log'])) {
 			<div class="login">
 				<form method="post" id="login-form" >
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="username" placeholder="Username" required="">
-					<input type="password" name="password" placeholder="Password" required="">
+					<input type="text" name="username1" placeholder="Username" required="">
+					<input type="password" name="password1" placeholder="Password" required="">
 					<button type="submit" name="submit-btn-log" >Login</button>
 				</form>
-				  
+				  <a href="../Streaming-Platform-Project/guest.html"> <button  id="submit-btn">Login as a guest</button> </a>
 			</div>
 
 	</div>
