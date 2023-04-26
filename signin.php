@@ -76,20 +76,20 @@ if (isset($_POST['submit-btn-log'])) {
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
 			<div class="signup" id="registration-form">
-				<form method="post" id="signup-form" action="../Streaming-Platform-Project/assets/php/register.php">
+				<form method="post" id="signup-form" action="../Streaming-Platform-Project/register.php">
 					<label>Sign up</label>
 					<input type="text" name="username" placeholder="User name" id="username" required="">
 					<input type="email" name="email" placeholder="Email" id="email"required="">
-					<input type="password" name="pswd" placeholder="Password" id="password" required="">
-					<button type="submit" name="submit" id="submit-btn">Sign up</button>
+					<input type="password" name="pswd2" placeholder="Password" id="password" required="">
+					<button type="submit" name="submit-btn" >Sign up</button>
 				</form>
 			</div>
 
 			<div class="login">
-				<form method="post" id="login-form" >
+				<form method="post" id="login-form" action="../Streaming-Platform-Project/php/login.php" >
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="username1" placeholder="Username" required="">
-					<input type="password" name="password1" placeholder="Password" required="">
+					<input type="text" name="username" placeholder="Username" required="">
+					<input type="password" name="password" placeholder="Password" required="">
 					<button type="submit" name="submit-btn-log" >Login</button>
 				</form>
 				  <a href="../Streaming-Platform-Project/guest.html"> <button  id="submit-btn">Login as a guest</button> </a>

@@ -82,7 +82,7 @@ if (!isset($_SESSION['user'])) {
           </select>
         </div>
 
-        <button class="btn btn-primary" id="signin-btn" >Log out</button>
+        <a href="..\Streaming-Platform-Project\logout.php"><button class="btn btn-primary" id="signin-btn" >Log out</button></a>
 
       </div>
 
@@ -269,8 +269,62 @@ if (!isset($_SESSION['user'])) {
           </div>
 
           <ul class="movies-list  has-scrollbar">
+            <?php
 
-            <li>
+$connection=mysqli_connect('localhost','root','','filmhub_db');
+$query = "SELECT name,year,image,rating,time FROM `movies`where upcoming='yes';";
+$result = mysqli_query($connection, $query);
+
+if (mysqli_num_rows($result) > 0) {
+  foreach($result as $row){
+   
+    ?>
+<li>
+              <div class="movie-card">
+
+                <a href="./movie-details.html">
+                  <figure class="card-banner">
+                    <img src='<?php echo $row['image']?>' alt="">
+                  </figure>
+                </a>
+
+                <div class="title-wrapper">
+                  <a href="./movie-details.html">
+                    <h3 class="card-title"><?php echo $row['name']?></h3>
+                  </a>
+
+                  <time datetime='<?php echo $row['year']?>'><?php echo $row['year']?></time>
+                </div>
+
+                <div class="card-meta">
+                  <div class="badge badge-outline">HD</div>
+
+                  <div class="duration">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="PT'<?php echo $row['time']?>'M"><?php echo $row['time']?> min</time>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+
+                    <data><?php echo $row['rating']?></data>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+    <?php
+    
+  }
+
+}
+mysqli_close($connection);
+?>
+
+
+            
+            <!-- <li>
               <div class="movie-card">
 
                 <a href="./movie-details.html">
@@ -414,7 +468,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
 
               </div>
-            </li>
+            </li> -->
 
           </ul>
 
@@ -583,8 +637,59 @@ if (!isset($_SESSION['user'])) {
           </ul>
 
           <ul class="movies-list">
+          <?php
 
-            <li>
+$connection=mysqli_connect('localhost','root','','filmhub_db');
+$query = "SELECT name,year,image,rating,time FROM `movies` where category='movie';";
+$result = mysqli_query($connection, $query);
+
+if (mysqli_num_rows($result) > 0) {
+  foreach($result as $row){
+   
+    ?>
+<li>
+              <div class="movie-card">
+
+                <a href="./movie-details.html">
+                  <figure class="card-banner">
+                    <img src='<?php echo $row['image']?>' alt="">
+                  </figure>
+                </a>
+
+                <div class="title-wrapper">
+                  <a href="./movie-details.html">
+                    <h3 class="card-title"><?php echo $row['name']?></h3>
+                  </a>
+
+                  <time datetime='<?php echo $row['year']?>'><?php echo $row['year']?></time>
+                </div>
+
+                <div class="card-meta">
+                  <div class="badge badge-outline">HD</div>
+
+                  <div class="duration">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="PT'<?php echo $row['time']?>'M"><?php echo $row['time']?> min</time>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+
+                    <data><?php echo $row['rating']?></data>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+    <?php
+    
+  }
+
+}
+mysqli_close($connection);
+?>
+            <!-- <li>
               <div class="movie-card">
 
                 <a href="./movie-details.html">
@@ -870,7 +975,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
 
               </div>
-            </li>
+            </li> -->
 
           </ul>
 
@@ -893,8 +998,59 @@ if (!isset($_SESSION['user'])) {
           <h2 class="h2 section-title">World Best TV Series</h2>
 
           <ul class="movies-list">
+          <?php
 
-            <li>
+$connection=mysqli_connect('localhost','root','','filmhub_db');
+$query = "SELECT name,year,image,rating,time FROM `movies` where category='tvshow';";
+$result = mysqli_query($connection, $query);
+
+if (mysqli_num_rows($result) > 0) {
+  foreach($result as $row){
+   
+    ?>
+<li>
+              <div class="movie-card">
+
+                <a href="./movie-details.html">
+                  <figure class="card-banner">
+                    <img src='<?php echo $row['image']?>' alt="">
+                  </figure>
+                </a>
+
+                <div class="title-wrapper">
+                  <a href="./movie-details.html">
+                    <h3 class="card-title"><?php echo $row['name']?></h3>
+                  </a>
+
+                  <time datetime='<?php echo $row['year']?>'><?php echo $row['year']?></time>
+                </div>
+
+                <div class="card-meta">
+                  <div class="badge badge-outline">HD</div>
+
+                  <div class="duration">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="PT'<?php echo $row['time']?>'M"><?php echo $row['time']?> min</time>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+
+                    <data><?php echo $row['rating']?></data>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+    <?php
+    
+  }
+
+}
+mysqli_close($connection);
+?>
+            <!-- <li>
               <div class="movie-card">
 
                 <a href="./movie-details.html">
@@ -1036,7 +1192,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
 
               </div>
-            </li>
+            </li> -->
 
           </ul>
 

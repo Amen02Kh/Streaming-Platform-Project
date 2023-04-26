@@ -56,7 +56,8 @@ $(document).ready(function() {
       $.each(response, function(index, item) {
         var movie = {
           name: item.name,
-          year: item.year
+          year: item.year,
+          image:item.image
         };
         movies.push(movie);
       });
@@ -65,10 +66,12 @@ $(document).ready(function() {
       // create movie cards
       let searchbox=document.getElementsByClassName('searchbox')[0];
       movies.forEach(element => {
-        const {name,year}=element;
+        const {name,year,image}=element;
         let card=document.createElement('a');
         card.setAttribute('href', './movie-details.html');
-        card.innerHTML=`          
+        
+        card.innerHTML=` 
+        <img src="${image}" alt="">      
         <div class="content">
           <h6>${name}</h6>
           <p>${year}</p>

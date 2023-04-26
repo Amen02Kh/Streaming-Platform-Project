@@ -1377,12 +1377,12 @@ body.active { overflow: hidden; }
     background: rgb(184, 184, 184,.6);
     transition: .3s linear;
   }
-  /* .searchin .searchbox a img{
+   .searchin .searchbox a img{
    width: 30px;
-   height: 45px;
+   height: 40px;
    border-radius: 5px;
    margin: 0px 5px;
-  } */
+  } 
   .searchin .searchbox a .content{
     color: #fff;
     padding-left: 10px;
