@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <?php
 $connection=mysqli_connect('localhost','root','','filmhub_db');
 $errors= array();
@@ -6,10 +6,10 @@ if(!$connection){
     die("Something went wrong;");
 }
 
-if (isset($_POST['submit'])) {
+ if (isset($_POST['pswd2'])) {
    $username=$_POST['username'];
    $email=$_POST['email'];
-   $password=$_POST['pswd'];
+   $password=$_POST['pswd2'];
    
     #encrypting pwd for security
 //    $password_hash=password_hash($password,PASSWORD_DEFAULT);
@@ -31,6 +31,6 @@ if (isset($_POST['submit'])) {
     }
     else{
         die("Something went wrong");
-    }
+    } 
 }
-?>
+?> --> 

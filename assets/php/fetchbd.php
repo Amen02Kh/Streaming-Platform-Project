@@ -1,6 +1,6 @@
 <?php
 $connection=mysqli_connect('localhost','root','','filmhub_db');
-$query = "SELECT name,year FROM `movies`;";
+$query = "SELECT name,year,image FROM `movies`;";
 $result = mysqli_query($connection, $query);
 $array = [];
 if (mysqli_num_rows($result) > 0) {
@@ -8,7 +8,8 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         $array[] = [
             "name" => $row["name"],
-            "year" => $row["year"]
+            "year" => $row["year"],
+            "image"=> $row["image"]
         ];
     }
     

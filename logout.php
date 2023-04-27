@@ -1,9 +1,12 @@
 <?php   
  session_start();  
 
-if (isset($_SESSION['USER_ID'])) {  
-    session_destroy();
-     header("location:..\Streaming-Platform-Project\signin.php");  
+
+    unset($_SESSION['USER_ID']);
+    echo"test";
+    header("location:..\Streaming-Platform-Project\signin.php");  
+    
+      
        
-}   
+ 
 ?> 
