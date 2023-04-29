@@ -86,10 +86,10 @@ if (isset($_POST['submit-btn-log'])) {
 			</div>
 
 			<div class="login">
-				<form method="post" id="login-form" action="../Streaming-Platform-Project/php/login.php" >
+				<form method="post" id="login-form" action="" >
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="username" placeholder="Username" required="">
-					<input type="password" name="password" placeholder="Password" required="">
+					<input type="text" name="username1" placeholder="Username" required="">
+					<input type="password" name="password1" placeholder="Password" required="">
 					<button type="submit" name="submit-btn-log" >Login</button>
 				</form>
 				  <a href="../Streaming-Platform-Project/guest.html"> <button  id="submit-btn">Login as a guest</button> </a>

@@ -6,7 +6,7 @@ if(!$connection){
     die("Something went wrong;");
 }
 
- if (isset($_POST['pswd2'])) {
+ if (isset($_POST['submit'])) {
    $username=$_POST['username'];
    $email=$_POST['email'];
    $password=$_POST['pswd2'];
@@ -15,7 +15,7 @@ if(!$connection){
 //    $password_hash=password_hash($password,PASSWORD_DEFAULT);
    $password_hash=password_hash($password,PASSWORD_DEFAULT);
    #insertion user jdid
-    $sql="INSERT INTO login_register(`username`,`email`,`password`) values( ?, ?,?)";
+    $sql="INSERT INTO login_register(username,email,password) values( ?, ?,?)";
     
     # preventing SQL INJECTION
     $stmt=mysqli_stmt_init($connection);
@@ -33,4 +33,4 @@ if(!$connection){
         die("Something went wrong");
     } 
 }
-?> --> 
+?>

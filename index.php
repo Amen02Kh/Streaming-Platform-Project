@@ -269,14 +269,14 @@ if (!isset($_SESSION['user'])) {
           </div>
 
           <ul class="movies-list  has-scrollbar">
-            <?php
+    <?php
 
-$connection=mysqli_connect('localhost','root','','filmhub_db');
-$query = "SELECT name,year,image,rating,time FROM `movies`where upcoming='yes';";
-$result = mysqli_query($connection, $query);
+      $connection=mysqli_connect('localhost','root','','filmhub_db');
+      $query = "SELECT name,year,image,rating,time FROM `movies`where upcoming='yes';";
+      $result = mysqli_query($connection, $query);
 
-if (mysqli_num_rows($result) > 0) {
-  foreach($result as $row){
+      if (mysqli_num_rows($result) > 0) {
+        foreach($result as $row) {
    
     ?>
 <li>
@@ -1027,7 +1027,9 @@ if (mysqli_num_rows($result) > 0) {
 
                 <div class="card-meta">
                   <div class="badge badge-outline">HD</div>
-
+                  <form method="post" action="watchlist.php">
+                  <button type="submit" name="watchbtn"><div class="badge badge-outline">Watch List &nbsp;&nbsp;♡</div></button>
+                  </form>
                   <div class="duration">
                     <ion-icon name="time-outline"></ion-icon>
 
