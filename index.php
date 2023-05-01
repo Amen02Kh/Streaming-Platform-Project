@@ -999,59 +999,51 @@ mysqli_close($connection);
 
           <ul class="movies-list">
           <?php
-
-$connection=mysqli_connect('localhost','root','','filmhub_db');
-$query = "SELECT name,year,image,rating,time FROM `movies` where category='tvshow';";
+$connection = mysqli_connect('localhost', 'root', '', 'filmhub_db');
+$query = "SELECT name, year, image, rating, time FROM `movies` WHERE category='tvshow';";
 $result = mysqli_query($connection, $query);
 
 if (mysqli_num_rows($result) > 0) {
-  foreach($result as $row){
-   
-    ?>
-<li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src='<?php echo $row['image']?>' alt="">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title"><?php echo $row['name']?></h3>
-                  </a>
-
-                  <time datetime='<?php echo $row['year']?>'><?php echo $row['year']?></time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">HD</div>
-                  <form method="post" action="watchlist.php">
-                  <button type="submit" name="watchbtn"><div class="badge badge-outline">Watch List &nbsp;&nbsp;♡</div></button>
-                  </form>
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT'<?php echo $row['time']?>'M"><?php echo $row['time']?> min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data><?php echo $row['rating']?></data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-    <?php
-    
+  foreach ($result as $row) {
+?>
+    <li>
+      <div class="movie-card">
+        <a href="./movie-details.html">
+          <figure class="card-banner">
+            <img src="<?php echo $row['image'] ?>" alt="">
+          </figure>
+        </a>
+        <div class="title-wrapper">
+          <a href="./movie-details.html">
+            <h3 class="card-title"><?php echo $row['name'] ?></h3>
+          </a>
+          <time datetime="<?php echo $row['year'] ?>"><?php echo $row['year'] ?></time>
+        </div>
+        <div class="card-meta">
+          <div class="badge badge-outline">HD</div>
+          <form method="get" action="watchlist.php">
+            <input type="hidden" name="name" value="<?php echo $row['name'] ?>">
+            <button type="submit" name="watchbtn">
+              <div class="badge badge-outline">Watch List &nbsp;&nbsp;♡</div>
+            </button>
+          </form>
+          <div class="duration">
+            <ion-icon name="time-outline"></ion-icon>
+            <time datetime="PT'<?php echo $row['time'] ?>'M"><?php echo $row['time'] ?> min</time>
+          </div>
+          <div class="rating">
+            <ion-icon name="star"></ion-icon>
+            <data><?php echo $row['rating'] ?></data>
+          </div>
+        </div>
+      </div>
+    </li>
+<?php
   }
-
 }
 mysqli_close($connection);
 ?>
+
             <!-- <li>
               <div class="movie-card">
 
