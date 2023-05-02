@@ -48,7 +48,7 @@ if (!isset($_SESSION['user'])) {
 
       <div class="overlay" data-overlay></div>
 
-      <a href="./index.html" class="logo">
+      <a href="./index.php" class="logo">
         <img src="./assets/images/logo.svg" alt="Filmlane logo">
       </a>
 
@@ -67,20 +67,11 @@ if (!isset($_SESSION['user'])) {
             </a> -->
           </div>
         </div>
+        <a href="..\Streaming-Platform-Project\watchlist.php"><ion-icon name="time-outline"></ion-icon>
         
+</a>
 
-        <div class="lang-wrapper">
-          <label for="language">
-            <ion-icon name="globe-outline"></ion-icon>
-          </label>
-
-          <select name="language" id="language">
-            <option value="en">EN</option>
-            <option value="au">AU</option>
-            <option value="ar">AR</option>
-            <option value="tu">TU</option>
-          </select>
-        </div>
+        
 
         <a href="..\Streaming-Platform-Project\logout.php"><button class="btn btn-primary" id="signin-btn" >Log out</button></a>
 
@@ -94,7 +85,7 @@ if (!isset($_SESSION['user'])) {
 
         <div class="navbar-top">
 
-          <a href="./index.html" class="logo">
+          <a href="./index.php" class="logo">
             <img src="./assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
@@ -107,7 +98,7 @@ if (!isset($_SESSION['user'])) {
         <ul class="navbar-list">
 
           <li>
-            <a href="./index.html" class="navbar-link">Home</a>
+            <a href="./index.php" class="navbar-link">Home</a>
           </li>
 
           <li>
@@ -1021,8 +1012,8 @@ if (mysqli_num_rows($result) > 0) {
         </div>
         <div class="card-meta">
           <div class="badge badge-outline">HD</div>
-          <form method="get" action="watchlist.php">
-            <input type="hidden" name="name" value="<?php echo $row['name'] ?>">
+          <form method="post" action="">
+            <input type="hidden" name="namee" value="<?php echo $row['name'] ?>">         
             <button type="submit" name="watchbtn">
               <div class="badge badge-outline">Watch List &nbsp;&nbsp;♡</div>
             </button>
@@ -1043,6 +1034,8 @@ if (mysqli_num_rows($result) > 0) {
 }
 mysqli_close($connection);
 ?>
+
+              
 
             <!-- <li>
               <div class="movie-card">
@@ -1192,9 +1185,29 @@ mysqli_close($connection);
 
         </div>
       </section>
+      <?php
+               
+               $connection=mysqli_connect('localhost','root','','filmhub_db');
+$errors = array();
+if (!$connection) {
+    die("Something went wrong;");
+}
 
+if (isset($_POST['watchbtn'])) {
+  
+  $name = mysqli_real_escape_string($connection, $_POST['namee']);
+  $query2 = "SELECT id FROM movies WHERE name=?";
+  $stmt = mysqli_prepare($connection, $query2);
+  mysqli_stmt_bind_param($stmt, "s", $name);
+  mysqli_stmt_execute($stmt);
+  $result2 = mysqli_stmt_get_result($stmt);
+  $row = mysqli_fetch_assoc($result2);
+  $movie_id = $row['id'];
+  $query = "INSERT INTO watch_list (id) VALUES ('$movie_id')";
+  $result = mysqli_query($connection, $query);
+}
 
-
+?>
 
 
       <!-- 
@@ -1239,7 +1252,7 @@ mysqli_close($connection);
 
         <div class="footer-brand-wrapper">
 
-          <a href="./index.html" class="logo">
+          <a href="./index.php" class="logo">
             <img src="./assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
@@ -1348,9 +1361,7 @@ mysqli_close($connection);
     - #GO TO TOP
   -->
 
-  <a href="#top" class="go-top" data-go-top>
-    <ion-icon name="chevron-up"></ion-icon>
-  </a>
+  
 
 
 
