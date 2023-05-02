@@ -61,7 +61,7 @@
             </a> -->
           </div>
         </div>
-        <a href="..\Streaming-Platform-Project\logout.php"><ion-icon name="time-outline"></ion-icon>
+        <a href="..\Streaming-Platform-Project\watchlist.php"><ion-icon size="large" name="time-outline"></ion-icon>
         
 </a>
 
@@ -191,7 +191,7 @@ $(document).ready(function() {
                 html += '</div>';
                 html += '<div class="card-meta">';
                 html += '<div class="badge badge-outline">HD</div>';
-                html += '<form method="post" action="../Streaming-Platform-Project/watch.php">';
+                html += '<form method="post" action="../Streaming-Platform-Project/remove.php">';
                 html += '<input type="hidden" name="name" value="' + item.name + '">';
                 html += '<button type="submit" name="remove">';
                 html += '<div class="badge badge-outline">Remove</div>';

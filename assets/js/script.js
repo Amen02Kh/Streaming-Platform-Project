@@ -104,9 +104,3 @@ searching.addEventListener('keyup', () => {
     }
   }
 });
-
-
-
-
-
-

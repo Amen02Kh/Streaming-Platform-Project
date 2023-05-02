@@ -67,7 +67,7 @@ if (!isset($_SESSION['user'])) {
             </a> -->
           </div>
         </div>
-        <a href="..\Streaming-Platform-Project\watchlist.php"><ion-icon name="time-outline"></ion-icon>
+        <a href="..\Streaming-Platform-Project\watchlist.php"><ion-icon size="large" name="time-outline"></ion-icon>
         
 </a>
 
@@ -270,26 +270,41 @@ if (!isset($_SESSION['user'])) {
         foreach($result as $row) {
    
     ?>
-<li>
+<li> 
+  
+                    
               <div class="movie-card">
-
-                <a href="./movie-details.html">
+              <form id="detail" action="./movie-details.php" method="POST">
+                    <input type="hidden" name="named" value="<?php echo $row['name'] ?>"> 
+                    
+                <a href="#">
+                <button class="overlay-button" hidden type='submit' name='detail'>
                   <figure class="card-banner">
                     <img src='<?php echo $row['image']?>' alt="">
                   </figure>
                 </a>
+                </button>
+
+
 
                 <div class="title-wrapper">
-                  <a href="./movie-details.html">
+                  <a href="">
+                    
                     <h3 class="card-title"><?php echo $row['name']?></h3>
                   </a>
 
                   <time datetime='<?php echo $row['year']?>'><?php echo $row['year']?></time>
                 </div>
-
+                </form>
                 <div class="card-meta">
                   <div class="badge badge-outline">HD</div>
-
+                  <form id="addwatch" method="post" action="../Streaming-Platform-Project/add.php">
+            <input type="hidden" name="namee" value="<?php echo $row['name'] ?>">         
+            <button type="submit" name="watchbtn">
+            </form>
+              <div class="badge badge-outline">Watch List &nbsp;&nbsp;♡</div>
+            </button>
+          
                   <div class="duration">
                     <ion-icon name="time-outline"></ion-icon>
 
@@ -304,7 +319,9 @@ if (!isset($_SESSION['user'])) {
                 </div>
 
               </div>
-            </li>
+              
+   
+           
     <?php
     
   }
@@ -312,6 +329,7 @@ if (!isset($_SESSION['user'])) {
 }
 mysqli_close($connection);
 ?>
+ </li>
           </ul>
 
         </div>
@@ -328,7 +346,7 @@ mysqli_close($connection);
         <div class="pricing-card basic">
           <div class="heading">
             <h4>BASIC</h4>
-            <p>for termet omek</p>
+            
           </div>
           <p class="price">
             2Dt
@@ -365,7 +383,7 @@ mysqli_close($connection);
         <div class="pricing-card standard">
           <div class="heading">
             <h4>STANDARD</h4>
-            <p>For termet omek</p>
+            
           </div>
           <p class="price">
             5DT
@@ -402,7 +420,7 @@ mysqli_close($connection);
         <div class="pricing-card premium">
           <div class="heading">
             <h4>PREMIUM</h4>
-            <p>for termet omek</p>
+            
           </div>
           <p class="price">
             10DT
@@ -508,7 +526,12 @@ if (mysqli_num_rows($result) > 0) {
 
                 <div class="card-meta">
                   <div class="badge badge-outline">HD</div>
-
+                  <form id="addwatch" method="post" action="../Streaming-Platform-Project/add.php">
+            <input type="hidden" name="namee" value="<?php echo $row['name'] ?>">         
+            <button type="submit" name="watchbtn">
+              <div class="badge badge-outline">Watch List &nbsp;&nbsp;♡</div>
+            </button>
+          </form>
                   <div class="duration">
                     <ion-icon name="time-outline"></ion-icon>
 
@@ -577,7 +600,7 @@ if (mysqli_num_rows($result) > 0) {
         </div>
         <div class="card-meta">
           <div class="badge badge-outline">HD</div>
-          <form method="post" action="">
+          <form id="addwatch" method="post" action="../Streaming-Platform-Project/add.php">
             <input type="hidden" name="namee" value="<?php echo $row['name'] ?>">         
             <button type="submit" name="watchbtn">
               <div class="badge badge-outline">Watch List &nbsp;&nbsp;♡</div>
@@ -604,29 +627,7 @@ mysqli_close($connection);
 
         </div>
       </section>
-      <?php
-               
-               $connection=mysqli_connect('localhost','root','','filmhub_db');
-$errors = array();
-if (!$connection) {
-    die("Something went wrong;");
-}
-
-if (isset($_POST['watchbtn'])) {
-  
-  $name = mysqli_real_escape_string($connection, $_POST['namee']);
-  $query2 = "SELECT id FROM movies WHERE name=?";
-  $stmt = mysqli_prepare($connection, $query2);
-  mysqli_stmt_bind_param($stmt, "s", $name);
-  mysqli_stmt_execute($stmt);
-  $result2 = mysqli_stmt_get_result($stmt);
-  $row = mysqli_fetch_assoc($result2);
-  $movie_id = $row['id'];
-  $query = "INSERT INTO watch_list (id) VALUES ('$movie_id')";
-  $result = mysqli_query($connection, $query);
-}
-
-?>
+     
 
 
       <!-- 
@@ -782,7 +783,7 @@ if (isset($_POST['watchbtn'])) {
 
   
 
-
+  
 
 
 
@@ -791,7 +792,7 @@ if (isset($_POST['watchbtn'])) {
   -->
   <script src="./assets/js/script.js"></script>
   
-
+ 
   <!-- 
     - ionicon link
   -->
