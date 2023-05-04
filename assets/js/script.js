@@ -22,7 +22,7 @@ for (let i = 0; i < navElemArr.length; i++) {
 
   });
 
-}
+} 
 
 
 
@@ -104,32 +104,3 @@ searching.addEventListener('keyup', () => {
     }
   }
 });
-
-// AHAWA CODE ELI MAFROUDH IHEZ DONNE MEL PHP LEL JS
-/* fetch("http://localhost/Streaming-Platform-Project/assets/php/fetchbd.php")
-  .then((res) => {
-    if (!res.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return res.json();
-  })
-  .then((data) => {
-    
-    
-
-  })
-
-fetch("http://localhost/Streaming-Platform-Project/test.php")
-.then((res) => res.json())
-    .then((data) => {
-        const result = JSON.parse(data);
-        
-    }); */
-    const goTopBtn = document.querySelector("[data-go-top]");   
-window.addEventListener("scroll", function () {
-
-  window.scrollY >= 500 ? goTopBtn.classList.add("active") : goTopBtn.classList.remove("active");
-
-});
-
-

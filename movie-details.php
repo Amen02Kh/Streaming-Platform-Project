@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +37,7 @@
 
       <div class="overlay" data-overlay></div>
 
-      <a href="./index.html" class="logo">
+      <a href="./index.php" class="logo">
         <img src="./assets/images/logo.svg" alt="Filmlane logo">
       </a>
 
@@ -70,7 +71,7 @@
           </select>
         </div>
 
-        <button class="btn btn-primary" id="signin-btn" >Sign in</button>
+        <button class="btn btn-primary" id="signin-btn" >Log Out</button>
 
       </div>
 
@@ -82,7 +83,7 @@
 
         <div class="navbar-top">
 
-          <a href="./index.html" class="logo">
+          <a href="./index.php" class="logo">
             <img src="./assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
@@ -95,21 +96,21 @@
         <ul class="navbar-list">
 
           <li>
-            <a href="./index.html" class="navbar-link">Home</a>
+            <a href="./index.php" class="navbar-link">Home</a>
           </li>
 
           <li>
-            <a href="#upcoming" class="navbar-link">Upcoming</a>
+            <a href="./index.php#upcoming" class="navbar-link">Upcoming</a>
           </li>
 
           <li>
-            <a href="#tvshow" class="navbar-link">Tv Show</a>
+            <a href="./index.php#tvshow" class="navbar-link">Tv Show</a>
           </li>
 
          
 
           <li>
-            <a href="#pricing" class="navbar-link">Pricing</a>
+            <a href="./index.php#pricing" class="navbar-link">Pricing</a>
           </li>
 
 
@@ -167,10 +168,40 @@
 
       <section class="movie-detail">
         <div class="container">
+        <?php
+               
+               $connection=mysqli_connect('localhost','root','','filmhub_db');
+$errors = array();
+if (!$connection) {
+    die("Something went wrong;");
+}
 
+if (isset($_POST['detail'])) {
+
+  $name = mysqli_real_escape_string($connection, $_POST['named']);
+  $query2 = "SELECT id FROM movies WHERE name=?";
+  $stmt = mysqli_prepare($connection, $query2);
+  mysqli_stmt_bind_param($stmt, "s", $name);
+  mysqli_stmt_execute($stmt);
+  $result2 = mysqli_stmt_get_result($stmt);
+  $row = mysqli_fetch_assoc($result2);
+  $movie_id = $row['id'];
+  $query = "SELECT name,year,image,rating,time FROM movies where id='$movie_id' ;";
+  $result = mysqli_query($connection, $query);
+  $row = mysqli_fetch_assoc($result);
+ 
+  if($row){ 
+     
+    
+    
+    
+    
+
+
+?>
           <figure class="movie-detail-banner">
 
-            <img src="./assets/images/movie-4.png" alt="Free guy movie poster">
+            <img src='<?php echo $row['image']?>' alt="">
 
             <button class="play-btn">
               <ion-icon name="play-circle-outline"></ion-icon>
@@ -180,10 +211,10 @@
 
           <div class="movie-detail-content">
 
-            <p class="detail-subtitle">New Episodes</p>
+            
 
             <h1 class="h1 detail-title">
-              Free <strong>Guy</strong>
+             <strong><?php echo $row['name']?></strong>
             </h1>
 
             <div class="meta-wrapper">
@@ -209,13 +240,13 @@
                 <div>
                   <ion-icon name="calendar-outline"></ion-icon>
 
-                  <time datetime="2021">2021</time>
+                  <time datetime="<?php echo $row['year']?>"><?php echo $row['year']?></time>
                 </div>
 
                 <div>
                   <ion-icon name="time-outline"></ion-icon>
 
-                  <time datetime="PT115M">115 min</time>
+                  <time datetime="PT<?php echo $row['time']?>M"><?php echo $row['time']?></time>
                 </div>
 
               </div>
@@ -250,7 +281,7 @@
 
             </div>
 
-            <a href="./assets/images/movie-4.png" download class="download-btn">
+            <a href='<?php echo $row['image']?>' download class="download-btn">
               <span>Download</span>
 
               <ion-icon name="download-outline"></ion-icon>
@@ -261,7 +292,18 @@
         </div>
       </section>
 
+<?php
+  }
+}else{
+  echo "
+  <script >
+  alert('zab');
+  </script>
+";
+}
 
+
+?>
 
 
 
