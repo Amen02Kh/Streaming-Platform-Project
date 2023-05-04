@@ -49,7 +49,7 @@ if (!isset($_SESSION['user'])) {
       <div class="overlay" data-overlay></div>
 
       <a href="./index.php" class="logo">
-        <img src="./assets/images/logo.svg" alt="Filmlane logo">
+        <img src="./assets/images/logo.png" alt="Filmlane logo">
       </a>
 
       <div class="header-actions">
@@ -86,7 +86,7 @@ if (!isset($_SESSION['user'])) {
         <div class="navbar-top">
 
           <a href="./index.php" class="logo">
-            <img src="./assets/images/logo.svg" alt="Filmlane logo">
+            <img src="./assets/images/logo.png" alt="Filmlane logo">
           </a>
 
           <button class="menu-close-btn" data-menu-close-btn>
@@ -673,7 +673,7 @@ mysqli_close($connection);
         <div class="footer-brand-wrapper">
 
           <a href="./index.php" class="logo">
-            <img src="./assets/images/logo.svg" alt="Filmlane logo">
+            <img src="./assets/images/logo.png" alt="Filmlane logo">
           </a>
 
           <ul class="footer-list">
