@@ -23,7 +23,7 @@ if (isset($_POST['send'])) {
 
     mysqli_query($connection,$request);
     sleep(2);
-    header('location:../../index.html');
+    header('location:../../index.php');
 }
 else{
     echo "Page d'erreur coocking ...";

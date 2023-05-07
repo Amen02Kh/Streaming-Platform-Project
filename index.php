@@ -18,7 +18,7 @@ if (!isset($_SESSION['user'])) {
   <!-- 
     - favicon
   -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- 
